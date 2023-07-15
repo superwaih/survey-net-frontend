@@ -3,9 +3,15 @@ import React from 'react'
 import RegisterImage from "@/public/images/register.jpg"
 import Image from 'next/image'
 import RegistrationForm from '@/components/register-components/RegistrationForm'
+import Head from 'next/head'
 
 const RegisterPage = () => {
   return (
+    <>
+    <Head>
+        <title>Create An Account</title>
+      </Head>
+    
     <div className='bg-[#F2FAFF] min-h-screen'>
       <HeaderInfo />
       {/* <div className='w-full flex items-center justify-center relative h-[400px]'>
@@ -23,6 +29,7 @@ const RegisterPage = () => {
       <RegistrationForm />
 
     </div>
+    </>
   )
 }
 

@@ -14,7 +14,7 @@ const VerificationForm = () => {
   return (
     <form 
     onSubmit={handleSubmit(onSubmit)}
-    className=' shadow-md px-4 flex  bg-white flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 '>
+    className=' shadow-md px-4 flex  bg-white rounded-md flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 '>
         <div className='flex flex-col gap-3'>
             <label className='font-semibold' htmlFor="">Survey Number</label>
             <input 

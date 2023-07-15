@@ -1,12 +1,14 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-
+import Link from 'next/link'
 const HeaderInfo = () => {
     const router = useRouter()
   return (
     <header className=" w-full  border-b shadow-md bg-white">
     <div className='flex py-6 items-center justify-between m-auto w-[90%]'>
+    <Link href="/">
     <div>Company Logo</div>
+    </Link>
     <div className="flex justify-between gap-4">
       <button 
       onClick={() => router.push("/register")}

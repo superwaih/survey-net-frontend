@@ -2,9 +2,17 @@ import RegistrationForm from '@/components/register-components/RegistrationForm'
 import VerificationForm from '@/components/register-components/VerificationForm'
 import HeaderInfo from '@/components/reusables/Header'
 import React from 'react'
+import Head from 'next/head'
+ 
 
 const VerificationPage = () => {
   return (
+
+    <>
+     <Head>
+        <title>Verification Page</title>
+      </Head>
+    
     <div className='bg-[#F2FAFF] min-h-screen'>
       <HeaderInfo />
       <div className='py-6 px-5 text-center'>
@@ -13,6 +21,7 @@ const VerificationPage = () => {
       </div>
      <VerificationForm />
     </div>
+    </>
   )
 }
 
