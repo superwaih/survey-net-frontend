@@ -58,7 +58,7 @@ const VerificationForm = () => {
         type='submit'
         className="bg-red-500 p-3 rounded-md shadow-md text-white w-full py-4"
         >
-            Register Now
+            Proceed to Make Payment
         </button>
     </form>
   )
