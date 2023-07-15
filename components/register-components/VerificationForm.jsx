@@ -45,13 +45,7 @@ const VerificationForm = () => {
             type="file" 
             placeholder='Upload your document' />
             
-            <div
-            onClick={() => setShowPassword(!showPassword)}
-            className='cursor-pointer text-xl absolute right-2 top-[30%]'
-            >
-               {showPassword ?  <AiFillEye /> :
-                <AiFillEyeInvisible />}
-            </div>
+          
            </div>
         </div>
 
