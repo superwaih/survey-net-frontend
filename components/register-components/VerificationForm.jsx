@@ -8,7 +8,7 @@ const VerificationForm = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm()
   const onSubmit = data => {
     console.log(data);
-    router.push("/verify")
+    // router.push("/verify")
     
   }
   return (
@@ -22,6 +22,11 @@ const VerificationForm = () => {
 
             className='px-3 py-4 border border-yellow-400 rounded-md' 
             type="text" placeholder='Please enter your firstname' />
+            {errors.survey_number && (
+                <div>
+                <span>{errors.survey_number}</span>
+            </div>
+            )}
         </div>
         <div className='flex flex-col gap-3'>
             <label className='font-semibold' htmlFor="">Surveyor's Name</label>
@@ -32,8 +37,8 @@ const VerificationForm = () => {
         <div className='flex flex-col gap-3'>
             <label className='font-semibold' htmlFor="">C of O Number</label>
             <input
-            {...register("co_number", {required: true, pattern: /^\S+@\S+$/i})}
-            className='px-3 py-4 border border-yellow-400 rounded-md' type="text" placeholder='please enter email' />
+            {...register("co_number", {required: true})}
+            className='px-3 py-4 border border-yellow-400 rounded-md' type="text" placeholder='Enter Certification of Occupancy Number' />
         </div>
         <div className='flex flex-col  gap-3 mb-3'>
             <label className='font-semibold' htmlFor="">Upload Document</label>
