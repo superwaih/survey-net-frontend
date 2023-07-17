@@ -23,9 +23,9 @@ const SuccessPage = () => {
             }
             
             
-            <button
+            {/* <button
             className="bg-red-500 p-3 rounded-md shadow-md text-white w-full py-4"
-            >Proceed to make payment now</button>
+            >Proceed to make payment now</button> */}
             <FlutterWaveBtn user={userObject}/>
         </div>
 
