@@ -19,7 +19,7 @@ const HeaderInfo = () => {
       <button
       onClick={() => router.push("/verify")}
       className="bg-yellow-500 p-3 rounded-md shadow-md text-white">
-        Add new property
+        Verify Documents
       </button>
     </div>
     </div>
