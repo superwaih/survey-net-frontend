@@ -1,22 +1,65 @@
+import { useUserContext } from "@/context/UserProvider";
+import axios from "axios";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { toast } from "react-toastify";
+import Spinner from "../reusables/Spinner";
 const RegistrationForm = () => {
+  const { loading, setLoading, setRegData } = useUserContext();
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-    router.push("/verify");
+  const onSubmit = async (formdata) => {
+    setLoading(true);
+    const newForm = {
+      email: formdata.email,
+      firstname: formdata.firstname,
+      lastname: formdata.lastname,
+    };
+    const config = { "content-type": "application/json" };
+    try {
+      const { data } = await axios.post(
+        "https://survey-net-backend.onrender.com/api/users/create",
+
+        newForm,
+        config
+      );
+      setLoading(false);
+      if (data.status == 201) {
+        toast.success(
+          "You just created an account, You will be redirected verification page",
+          {
+            position: "top-right",
+            autoClose: 7000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
+        setRegData(data.payload);
+
+        router.push("/verify");
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
-  console.log(errors)
+
   return (
+    <>
+    {loading && (<Spinner />)}
     <form
       onSubmit={handleSubmit(onSubmit)}
       className=" box-shadow px-4 flex bg-white rounded-md flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
@@ -45,7 +88,7 @@ const RegistrationForm = () => {
           type="text"
           placeholder="please your lastname"
         />
-          {errors.lastname && (
+        {errors.lastname && (
           <small className="text-red-400 font-semibold">
             Please enter your last name
           </small>
@@ -59,7 +102,7 @@ const RegistrationForm = () => {
           type="text"
           placeholder="please enter email"
         />
-          {errors.email?.type === "required" && (
+        {errors.email?.type === "required" && (
           <small className="text-red-400 font-semibold">
             Please enter your email address
           </small>
@@ -91,11 +134,13 @@ const RegistrationForm = () => {
 
       <button
         type="submit"
-        className="bg-red-500 p-3 rounded-md shadow-md text-white w-full py-4"
+        disabled={loading}
+        className="bg-red-500 disabled:opacity-50 p-3 rounded-md shadow-md text-white w-full py-4"
       >
-        Create Account
+        {loading ? "Loading ..." : " Create Account"}
       </button>
     </form>
+    </>
   );
 };
 

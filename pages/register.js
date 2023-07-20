@@ -4,13 +4,16 @@ import RegisterImage from "@/public/images/register.jpg"
 import Image from 'next/image'
 import RegistrationForm from '@/components/register-components/RegistrationForm'
 import Head from 'next/head'
+import Spinner from '@/components/reusables/Spinner'
 
 const RegisterPage = () => {
+
   return (
     <>
     <Head>
         <title>Create An Account</title>
       </Head>
+    
     
     <div className='bg-[#F2FAFF] min-h-screen'>
       <HeaderInfo />

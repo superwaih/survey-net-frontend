@@ -1,25 +1,139 @@
 import { useUserContext } from "@/context/UserProvider";
+import axios from "axios";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import Spinner from "../reusables/Spinner";
+import { toast } from "react-toastify";
+
 const VerificationForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const router = useRouter();
-  const{setUserObject, loading, setLoading, submissionType, setSubmissionType} = useUserContext()
-  const {
+   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+  const [showPassword, setShowPassword] = useState(false);
+  const [imageOne, setImageOne] = useState("");
+  const [convertingImage, setConvertingImage] = useState(false);
+  const watchAll = watch(["document"]);
+
+
+  const router = useRouter();
+  const{setUserObject, loading, setLoading, submissionType, setSubmissionType} = useUserContext()
+ 
+   const conver2base64 = async (file) => {
+    setConvertingImage(true);
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImageOne(reader.result.toString());
+      setConvertingImage(false);
+    };
+  };
   
-  const onSubmit = (data) => {
+   useEffect(() => {
+    if (watchAll[0] === undefined) return;
+    if (watchAll[0][0] !== undefined) {
+      conver2base64(watchAll[0][0]);
+    }
     
-    setUserObject(data);
-    router.push("/success")
+  }, [watchAll]);
+  const onSubmit = async (formdata) => {
+    setLoading(true)
+    let newData
+    if(submissionType === "surveyor_method"){
+      newData ={
+        images: [imageOne],
+        sureyor_name: formdata.surveyor_name,
+        survey_number: formdata.survey_number,
+        email: formdata.email,
+        verification_type: submissionType
+
+      }
+    }else{
+      newData={
+        images: [imageOne],
+        email: formdata.email,
+        cof_number: formdata.cof_number,
+        verification_type: submissionType
+
+      }
+    }
+    console.log(newData)
+    setUserObject(newData);
+    try {
+    const config = { "content-type": "application/json" };
+    const { data } = await axios.put(
+      `https://survey-net-backend.onrender.com/api/users/update/${formdata.email}`,
+
+      newData,
+      config
+    );
+    setLoading(false);
+    if (data.msg == "done") {
+      toast.success(
+        "Congratulations, Your request has been received",
+        {
+          position: "top-right",
+          autoClose: 7000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+      
+      setUserObject(data.payload);
+      
+    
+
+      router.push("/success");
+      setLoading(false)
+    }else{
+      toast.error(
+        `${data.msg}`,
+        {
+          position: "top-right",
+          autoClose: 7000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+      router.push("/register");
+
+    }
+    } catch (error) {
+      setLoading(false)
+      toast.error(
+        "An Error Occured",
+        {
+          position: "top-right",
+          autoClose: 7000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+      
+      
+    }
+    // router.push("/success")
   };
   return (
+    <>
+    {loading && (<Spinner />)}
     <form
       onSubmit={handleSubmit(onSubmit)}
       className=" shadow-md px-4 flex  bg-white rounded-md flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
@@ -78,7 +192,7 @@ const VerificationForm = () => {
               {...register("survey_number", { required: true })}
               className="px-3 py-4 border border-yellow-400 rounded-md"
               type="text"
-              placeholder="Please enter your firstname"
+              placeholder="Please survey number"
             />
             {errors.survey_number && (
               <div>
@@ -94,7 +208,7 @@ const VerificationForm = () => {
               {...register("surveyor_name", { required: true })}
               className="px-3 py-4 border border-yellow-400 rounded-md"
               type="text"
-              placeholder="Enter name of surveyor"
+              placeholder="Enter surveyor name"
             />
           </div>
         </>
@@ -106,7 +220,7 @@ const VerificationForm = () => {
             C of O Number
           </label>
           <input
-            {...register("co_number", { required: true })}
+            {...register("cof_number", { required: true })}
             className="px-3 py-4 border border-yellow-400 rounded-md"
             type="text"
             placeholder="Enter Certification of Occupancy Number"
@@ -135,6 +249,7 @@ const VerificationForm = () => {
         Verify Documents
       </button>
     </form>
+    </>
   );
 };
 

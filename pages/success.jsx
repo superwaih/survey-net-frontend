@@ -13,9 +13,9 @@ const SuccessPage = () => {
   })
 
   return (
-    <div className='h-screen w-full flex items-center justify-center bg-[#F2FAFF]'> 
+    <div className='h-screen w-full p-4 flex items-center justify-center bg-[#F2FAFF]'> 
 
-        <div className='flex flex-col space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md'>
+        <div className='flex flex-col shadow-lg rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md'>
             <h3>Dear <span className='font-bold'>{userObject?.email}</span>, your information has been recieved </h3>
             {/* <AiFillCheckCircle className='text-5xl text-green-500' /> */}
             {
