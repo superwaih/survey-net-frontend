@@ -5,7 +5,7 @@ export default function FlutterWaveBtn({user}) {
    const config = {
     public_key: "FLWPUBK_TEST-f6cadd59b5a302f8ebb19e93f46fa398-X" ,
     tx_ref: Date.now(),
-    amount: 5000,
+    amount: 2000,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd,transfer',
     customer: {
