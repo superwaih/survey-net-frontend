@@ -274,6 +274,11 @@ const VerificationForm = () => {
             type="file"
             placeholder="Upload your document"
           />
+           {errors.document && (
+          <small className="text-red-400 font-semibold">
+            Please upload your document
+          </small>
+        )}
         </div>
       </div>
 
