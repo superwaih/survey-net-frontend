@@ -199,6 +199,21 @@ const VerificationForm = () => {
                 <span>{errors.survey_number}</span>
               </div>
             )}
+             {errors.survey_number && (
+              <div>
+                <span>{errors.survey_number}</span>
+              </div>
+            )}
+             {errors.survey_number?.type === "minLength" && (
+          <small className="text-red-400 font-semibold">
+            survey number should more than 3 digits 
+          </small>
+        )}
+           {errors.survey_number?.type === "maxLength" && (
+          <small className="text-red-400 font-semibold">
+            survey number should not be more than 15digits 
+          </small>
+        )}
           </div>
           <div className="flex flex-col gap-3">
             <label className="font-semibold" htmlFor="">
@@ -210,6 +225,11 @@ const VerificationForm = () => {
               type="text"
               placeholder="Enter surveyor name"
             />
+            {errors.surveyor_name === "required" && (
+          <small className="text-red-400 font-semibold">
+            Please enter surveyor name
+          </small>
+        )}
           </div>
         </>
       )}
@@ -220,11 +240,26 @@ const VerificationForm = () => {
             C of O Number
           </label>
           <input
-            {...register("cof_number", { required: true })}
+            {...register("cof_number", { required: true, maxLength:15, minLength: 3 })}
             className="px-3 py-4 border border-yellow-400 rounded-md"
             type="text"
             placeholder="Enter Certification of Occupancy Number"
           />
+            {errors.cof_number === "required" && (
+          <small className="text-red-400 font-semibold">
+            Please enter C of O number
+          </small>
+        )}
+        {errors.cof_number?.type === "minLength" && (
+          <small className="text-red-400 font-semibold">
+            COF number should more than 3 digits 
+          </small>
+        )}
+           {errors.cof_number?.type === "maxLength" && (
+          <small className="text-red-400 font-semibold">
+            COF number should not be more than 15digits 
+          </small>
+        )}
         </div>
       )}
 
