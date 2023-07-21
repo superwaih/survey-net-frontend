@@ -4,6 +4,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Spinner from '@/components/reusables/Spinner'
+import { toast } from 'react-toastify'
 const AdminPage = () => {
   const{loading, setLoading} = useUserContext()
   const [allUsers, setAllUsers] = useState([])
@@ -20,9 +21,97 @@ const AdminPage = () => {
 
     }
   } 
+  const handleSuccessfulStatus = async(email) =>{
+    setLoading(true)
+    try {
+      const {data} = await axios.put(`https://survey-net-backend.onrender.com/api/users/updatestatus/${email}`,
+      {
+        verified_status: true
+      }
+     
+      )
+      if(data.msg === "done"){
+        toast.success(
+          "User information is update",
+          {
+            position: "top-right",
+            autoClose: 7000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
+        setLoading(false)
+      }
+    } catch (error) {
+      setLoading(false)
+      toast.error(
+        "An error occured",
+        {
+          position: "top-right",
+          autoClose: 7000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+      
+    }
+
+  }
+  const handleDeclineStatus = async(email) =>{
+    setLoading(true)
+    try {
+      const {data} = await axios.put(`https://survey-net-backend.onrender.com/api/users/updatestatus/${email}`,
+      {
+        verified_status: false
+      }
+     
+      )
+      if(data.msg === "done"){
+        toast.success(
+          "User request denied",
+          {
+            position: "top-right",
+            autoClose: 7000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          }
+        );
+        setLoading(false)
+      }
+    } catch (error) {
+      setLoading(false)
+      toast.error(
+        "An error occured",
+        {
+          position: "top-right",
+          autoClose: 7000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
+      
+    }
+
+  }
   useEffect(() => {
     fetchAllUsers()
-  },[])
+  },[loading])
   return (
     <DashboardLayout >
       {loading && (<Spinner />)}
@@ -68,8 +157,12 @@ const AdminPage = () => {
                 alt=""
               />
             </div>
-            <div className='w-full'>
-             <button className='py-3 rounded-md text-white px-2 w-full bg-green-500'> Verify Document</button>
+
+            <div className='w-full flex flex-col md:flex-row gap-2'>
+              {user.verified_status === false && (<button onClick={() => handleSuccessfulStatus(user.email)} className='py-3 rounded-md text-white px-2 w-full bg-green-500'> Approve Document</button>)}
+             <button onClick={() => handleDeclineStatus(user.email)} className='py-3 rounded-md text-white px-2 w-full bg-red-500'> Reject  Verification</button>
+
+
             </div>
            <div>
            

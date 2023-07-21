@@ -7,6 +7,8 @@ export const useUserContext = () => useContext(UserProvider)
 const UserProviderContext = ({children}) =>{
     const [userObject, setUserObject] = useState([])
     const [loading, setLoading] = useState(false)
+    const[successMsg, setSuccessMessage] =useState("")
+    const[paymentSuccess, setPaymentSuccess] = useState(false)
     const [submissionType, setSubmissionType] = useState("");
     const[reqData, setRegData] = useState([])
     return(
@@ -14,7 +16,9 @@ const UserProviderContext = ({children}) =>{
         value={{
         userObject,
         setUserObject,
+        successMsg, setSuccessMessage,
         setRegData,
+        paymentSuccess, setPaymentSuccess,
         reqData,
         loading,
         setLoading,
