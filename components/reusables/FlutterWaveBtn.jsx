@@ -11,7 +11,7 @@ export default function FlutterWaveBtn({user}) {
     tx_ref: Date.now(),
     amount: 1000,
     currency: 'NGN',
-    payment_options: 'card,mobilemoney,ussd,transfer',
+    payment_options: 'card,mobilemoney,ussd,banktransfer',
     customer: {
       email: user.email,
       phone_number: '070********',

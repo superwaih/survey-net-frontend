@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 const AdminPage = () => {
   const{loading, setLoading} = useUserContext()
   const [allUsers, setAllUsers] = useState([])
+  const[updateUsers, setUpdateUsers] = useState(false)
   const fetchAllUsers = async() =>{
     setLoading(true)
     try {
@@ -45,6 +46,8 @@ const AdminPage = () => {
           }
         );
         setLoading(false)
+        setUpdateUsers(!updateUsers)
+
       }
     } catch (error) {
       setLoading(false)
@@ -67,6 +70,7 @@ const AdminPage = () => {
   }
   const handleDeclineStatus = async(email) =>{
     setLoading(true)
+    
     try {
       const {data} = await axios.put(`https://survey-net-backend.onrender.com/api/users/updatestatus/${email}`,
       {
@@ -89,6 +93,7 @@ const AdminPage = () => {
           }
         );
         setLoading(false)
+        setUpdateUsers(!updateUsers)
       }
     } catch (error) {
       setLoading(false)
@@ -111,7 +116,7 @@ const AdminPage = () => {
   }
   useEffect(() => {
     fetchAllUsers()
-  },[loading])
+  },[])
   return (
     <DashboardLayout >
       {loading && (<Spinner />)}
@@ -145,7 +150,7 @@ const AdminPage = () => {
             </div>
             <div className='flex items-center gap-2'>
               <h3 className='font-semibold'>Verification Status:</h3>
-              <p className=' font-bold italic'>{user.status === true ? <span className='text-green-500'>Verified</span>  : <span className='text-red-500'>Not Verified</span>}</p>
+              <p className=' font-bold italic'>{user.verified_status === true ? <span className='text-green-500'>Verified</span>  : <span className='text-red-500'>Not Verified</span>}</p>
             </div>
             <div>
               <h3>Document:</h3>

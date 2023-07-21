@@ -1,12 +1,14 @@
 import HeaderInfo from '@/components/reusables/Header'
-import React from 'react'
+import React, { useState } from 'react'
 import RegisterImage from "@/public/images/register.jpg"
 import Image from 'next/image'
 import RegistrationForm from '@/components/register-components/RegistrationForm'
 import Head from 'next/head'
 import Spinner from '@/components/reusables/Spinner'
+import RegistrationSuccessful from '@/components/modal/RegistrationSuccessful'
 
 const RegisterPage = () => {
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <>
@@ -29,9 +31,10 @@ const RegisterPage = () => {
           Create an account
         </div>
       </div> */}
-      <RegistrationForm />
+      <RegistrationForm isOpen={isOpen} setIsOpen={setIsOpen} />
 
     </div>
+    {isOpen && (<RegistrationSuccessful isOpen={isOpen} setIsOpen={setIsOpen} />)}
     </>
   )
 }
