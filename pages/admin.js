@@ -116,49 +116,50 @@ const AdminPage = () => {
   }
   useEffect(() => {
     fetchAllUsers()
-  },[])
+  },[updateUsers])
+ 
   return (
     <DashboardLayout >
       {loading && (<Spinner />)}
       <div className='py-4 px-4  '>
         Showing Lists of all submitted Request
-        <div className='grid gap-2 md:grid-cols-2'>
+        <div className='grid gap-2 md:grid-cols-2 lg:grid-cols-3 overflow-y-scroll'>
           {allUsers?.map((user) =>{
            return(
             <div
-            className='py-3 border bg-[#F2FAFF] my-2 shadow-md px-2'
+            className='py-3 border max-w-md space-y-2 rounded-md border-[#306BB1] text-black bg-white my-2 shadow-md px-2'
             key={user._id}>
-            <div className='flex items-center gap-2'>
-              <h3>Email:</h3>
-            <h3 className='font-semibold'>{user.email}</h3>
+            <div className='flex justify-between flex-col'>
+              <h3 className='text-[#4C5561]'>Email:</h3>
+            <h3 className='font-semibold text-[#283341] text-xl'>{user.email}</h3>
             </div>
-            <div className='flex items-center gap-2'>
-              <h3 className='font-semibold'>Firstname:</h3>
-              <p>{user.firstname}</p>
+            <div className='flex justify-between flex-col'>
+              <h3 className='text-[#4C5561]'>Firstname:</h3>
+              <p className='font-semibold text-[#283341] text-xl'>{user.firstname}</p>
             </div>
-            <div className='flex items-center gap-2'>
-              <h3 className='font-semibold'>Lastname:</h3>
-              <p>{user.lastname}</p>
+            <div className='flex justify-between flex-col'>
+              <h3 className='text-[#4C5561]'>Lastname:</h3>
+              <p className='font-semibold text-[#283341] text-xl'>{user.lastname}</p>
             </div>
-            <div className='flex items-center gap-2'>
-              <h3 className='font-semibold'>Payment Status:</h3>
-              <p className='text-red-500 italic'>{user.payment_status}</p>
+            <div className='flex justify-between flex-col'>
+              <h3 className='text-[#4C5561]'>Payment Status:</h3>
+              <p className='font-semibold text-xl'>{user.payment_status === "pending" ? <span className='text-orange-500'>Pending</span> : <span className='text-green-600'>{user.payment_status}</span>}</p>
             </div>
-            <div className='flex items-center gap-2'>
-              <h3 className='font-semibold'>Verification Type:</h3>
-              <p className='text-green-500 font-bold italic'>{user.verification_type === "cof_method" ? "Certificate of Occupancy" : "Surveyor Method"}</p>
+            <div className='flex justify-between flex-col'>
+              <h3 className='text-[#4C5561]'>Verification Type:</h3>
+              <p className=' font-bold text-[#4C5561] text-xl'>{user.verification_type === "cof_method" ? "Certificate of Occupancy" : "Surveyor Method"}</p>
             </div>
-            <div className='flex items-center gap-2'>
-              <h3 className='font-semibold'>Verification Status:</h3>
-              <p className=' font-bold italic'>{user.verified_status === true ? <span className='text-green-500'>Verified</span>  : <span className='text-red-500'>Not Verified</span>}</p>
+            <div className='flex justify-between flex-col'>
+              <h3 className='text-[#4C5561]'>Verification Status:</h3>
+              <p className=' font-bold text-[#4C5561] text-xl'>{user.verified_status === true ? <span className='text-green-500'>Verified</span>  : <span className='text-red-500'>Not Verified</span>}</p>
             </div>
             <div>
               <h3>Document:</h3>
               <Image
                 width={500}
-                height={500}
+                height={400}
                 objectFit="cover"
-                src={"http://res.cloudinary.com/dpw9sm15p/image/upload/v1689847062/ids/fu5kq17kdvpbloaqlxvb.jpg"}
+                src={user.document[0]}
                 alt=""
               />
             </div>
