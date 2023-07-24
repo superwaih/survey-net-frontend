@@ -2,11 +2,11 @@
   "name": "survey-net",
   "version": "0.1.0",
   "private": true,
-  "homepage": "havens.ng",
   "scripts": {
-    "dev": "node server.js",
-    "build": "next build && next export",
-    "start": "NODE_ENV=production node server.js"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.15",

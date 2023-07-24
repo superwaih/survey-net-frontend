@@ -13,20 +13,21 @@ const HeaderInfo = () => {
       <AiOutlineHome className='text-red-500' />
       Effulgence Homes</div>
     </Link>
+
     <div className="flex justify-between gap-4">
       <button 
       onClick={() => router.push("/register")}
-      className="bg-red-500 p-2 md:p-3 rounded-md shadow-md text-white">
+      className="bg-red-500 p-2 md:p-3 md:px-4 rounded-md shadow-md text-white">
         Sign in
       </button>
 
-{!router.pathname.includes("register") && (
+{/* {!router.pathname.includes("register") && (
   <button
   onClick={() => router.push("/verify")}
   className="bg-yellow-500 p-2 md:p-3 rounded-md shadow-md text-white">
     Verify Documents
   </button>
-)}
+)} */}
     
     </div>
     </div>
