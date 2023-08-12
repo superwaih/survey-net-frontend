@@ -145,6 +145,28 @@ const VerificationForm = () => {
             </small>
           )}
         </div>
+        <div className="flex flex-col gap-3">
+          <label className="font-semibold" htmlFor="">
+           State
+          </label>
+          <select
+            {...register("state", { required: true })}
+            className="px-3 py-4 border border-yellow-400 rounded-md"
+          
+          >
+            <option value="Oyo">Oyo state</option>
+          </select>
+          {errors.email?.type === "required" && (
+            <small className="text-red-400 font-semibold">
+              Please enter your email address
+            </small>
+          )}
+          {errors.email?.type === "pattern" && (
+            <small className="text-red-400 font-semibold">
+              Please enter a valid email address
+            </small>
+          )}
+        </div>
         <div className="flex flex-col space-y-3">
           <label className="font-bold" htmlFor="">
             Select Verification Method
