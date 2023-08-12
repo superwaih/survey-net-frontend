@@ -148,7 +148,7 @@ const RegistrationForm = ({ setIsOpen }) => {
           <input
             {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
             className="px-3 py-4 border border-yellow-400 rounded-md"
-            type="tel"
+         
             placeholder="please enter email"
           />
           {errors.email?.type === "required" && (
