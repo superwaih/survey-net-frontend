@@ -5,9 +5,14 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Spinner from '@/components/reusables/Spinner'
 import { toast } from 'react-toastify'
+import HeaderInfo from '@/components/reusables/Header'
+import Link from 'next/link'
+import { AiFillEye, AiFillEyeInvisible, AiOutlineHome } from 'react-icons/ai'
+import { useForm } from 'react-hook-form'
 const AdminPage = () => {
   const{loading, setLoading} = useUserContext()
   const [allUsers, setAllUsers] = useState([])
+  const[passwordCorrect, setPasswordCorrect] = useState(false)
   const[updateUsers, setUpdateUsers] = useState(false)
   const fetchAllUsers = async() =>{
     setLoading(true)
@@ -114,12 +119,37 @@ const AdminPage = () => {
     }
 
   }
+  const[passwordLoading, setPasswordLoading] = useState(false)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+  const [showPassword, setShowPassword] = useState(false);
+  const[inVaidPassword, setInvalidPassword] = useState(false)
+
+  
   useEffect(() => {
     fetchAllUsers()
   },[updateUsers])
+  const onSubmit = async (formdata) => {
+    setPasswordLoading(true);
+    if(formdata.password === "admin"){
+      setPasswordLoading(false)
+      setPasswordCorrect(true)
+    }else{
+      setPasswordLoading(false)
+      setInvalidPassword(true)
+    }
+  }
  
   return (
-    <DashboardLayout >
+
+    <>
+    {
+      passwordCorrect ?
+      <DashboardLayout >
       {loading && (<Spinner />)}
       <div className='py-4 px-4  '>
         Showing Lists of all submitted Request
@@ -181,7 +211,68 @@ const AdminPage = () => {
           })}
         </div>
       </div>
+     
     </DashboardLayout>
+
+    : 
+    <div className='bg-[#F2FAFF] min-h-screen'>
+       <header className=" w-full  border-b shadow-md bg-white">
+    <div className='flex px-2 py-2 md:py-6 items-center  m-auto   lg:flex-row justify-between w-[80%]'>
+    <Link href="/">
+    <div className='font-italic flex items-center gap-2 font-bold text-lg'>
+      <AiOutlineHome className='text-red-500' />
+      Effulgence Homes</div>
+    </Link>
+
+   
+    </div>
+  </header>
+  
+  <form
+        onSubmit={handleSubmit(onSubmit)}
+        className=" box-shadow px-4 flex bg-white rounded-md flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
+      >
+        
+        <div className="flex flex-col  gap-3 mb-3">
+        <label htmlFor="">Password</label>
+        <div className="relative w-full">
+          <input
+            {...register("password", { required: true })}
+            className="px-3 w-full py-4 border border-yellow-400 rounded-md"
+            type={showPassword ? "text" : "password"}
+            placeholder="please enter your password"
+          />
+
+          <div
+            onClick={() => setShowPassword(!showPassword)}
+            className="cursor-pointer text-xl absolute right-2 top-[30%]"
+          >
+            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
+          </div>
+        </div>
+        {inVaidPassword && (
+            <small className="text-red-400 font-semibold">
+              Password is incorrect
+            </small>
+          )}
+      </div>
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="bg-red-500 disabled:opacity-50 p-3 rounded-md shadow-md text-white w-full py-4"
+        >
+          {passwordLoading ? "Loading ..." : " Admin log in"}
+        </button>
+      </form>
+      
+
+    </div>
+
+    } 
+    
+    </>
+   
   )
 }
 
