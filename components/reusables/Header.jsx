@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { AiOutlineHome } from 'react-icons/ai'
 const HeaderInfo = () => {
     const router = useRouter()
@@ -11,7 +12,14 @@ const HeaderInfo = () => {
     <div className='flex px-2 py-2 md:py-6 items-center  m-auto   lg:flex-row justify-between w-[80%]'>
     <Link href="/">
     <div className='font-italic flex items-center gap-2 font-bold text-lg'>
-      <AiOutlineHome className='text-red-500' />
+      {/* <AiOutlineHome className='text-red-500' /> */}
+      <Image
+        width={90}
+        height={90}
+        objectFit="cover"
+        src={"/bg/logo.png"}
+        alt=""
+      />
       Effulgence Homes
       </div>
     </Link>
