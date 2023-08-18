@@ -28,7 +28,7 @@ body{
   background: rgba(255, 255, 255, 0.12);
 }
 .header-bg{
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('/public/bg/bg-2-home-5.jpg') no-repeat center top
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), url('https://res.cloudinary.com/waleszn/image/upload/v1692393849/bg-2-home-5_n9sj9c.jpg') no-repeat center top
 }
 .loadingSpinner {
   width: 64px;
