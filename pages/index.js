@@ -8,6 +8,9 @@ import { fadeIn } from '@/variants'
 
 
 import HeroBanner from "@/components/reusables/HeroBanner";
+import Popular from "@/components/reusables/Popular";
+import Featured from "@/components/reusables/Featured";
+import ChooseUs from "@/components/reusables/ChooseUs";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -20,7 +23,10 @@ export default function Home() {
     <main className={` ${inter.className}`}>
    <HeaderInfo />
    <HeroBanner />
-   <div
+   <Popular />
+   <Featured />
+   <ChooseUs />
+   {/* <div
         className="w-[80%] mt-4 m-auto
         "
       >
@@ -89,18 +95,10 @@ Transparent and Trustworthy: We prioritize transparency and integrity in all our
         </motion.div>
 
         <div className="py-9 flexible border-[#CDDBEC] border-b">
-        {/* <div className="flex w-full flex-col space-y-5">
-            <h3 className="text-2xl md:text-3xl font-semibold">
-            Meet Our Team
-            </h3>
-            <p className="normal-text leading-12 max-w-2xl italic text-lg">
-            &ldquo;Our production is laid back on collaborative effort with different
-              team across multiple departments to yield significant result&ldquo;
-            </p>
-          </div> */}
+      
            
         </div>
-      </div>
+      </div> */}
     </main>
     
     </>
