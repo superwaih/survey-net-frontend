@@ -61,7 +61,7 @@ export const popularPlaces = [
 
 export const featuredPlaces = [
     {
-        id: 1,
+        id: 331,
         name: "Real Luxury Family House Villa",
         location: "Est St, 77 - Central Park South, NYC",
         rooms: 3,

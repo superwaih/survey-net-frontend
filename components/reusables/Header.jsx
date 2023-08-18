@@ -1,18 +1,34 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { AiOutlineHome } from 'react-icons/ai'
-const HeaderInfo = () => {
-    const router = useRouter()
-    
+const HeaderInfo = ({size}) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+    const toggleVisibility = () => {
+        if(window.scrollY > 300){
+            setIsVisible(true)
+        }else{
+            setIsVisible(false)
+        }
+    }
+  
+    useEffect(() => {
+        window.addEventListener('scroll', toggleVisibility);
+        return () =>{
+            window.removeEventListener("scroll", toggleVisibility)
+        }
+    }, [])
+   
    
   return (
-    <header className=" w-full  border-b-2 fixed shadow-md head-col text-white border-white">
+    <header  
+    className={isVisible ? "w-full  border-b-2 fixed shadow-md bg-white text-white border-white": "w-full  border-b-2 fixed shadow-md head-col text-white border-white"}
+    
+    >
     <div className='flex px-2 py-2 md:py-5 items-center  m-auto   lg:flex-row justify-between w-[80%]'>
     <Link href="/">
     <div className='font-italic text-black flex items-center gap-2 font-bold text-lg'>
-      {/* <AiOutlineHome className='text-red-500' /> */}
       <Image
         width={90}
         height={90}

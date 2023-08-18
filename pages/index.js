@@ -12,17 +12,21 @@ import Popular from "@/components/reusables/Popular";
 import Featured from "@/components/reusables/Featured";
 import ChooseUs from "@/components/reusables/ChooseUs";
 import Slider from "@/components/reusables/Slider";
+import { useWindowSize } from "@uidotdev/usehooks";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter()
+  const size = useWindowSize();
+// console.log(size.height)
   return (
     <>
       <Head>
         <title>Landing Page</title>
       </Head>
     <main className={` ${inter.className}`}>
-   <HeaderInfo />
+   <HeaderInfo size={size} />
    <HeroBanner />
    <Popular />
    <Featured />
