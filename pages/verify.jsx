@@ -15,6 +15,8 @@ const VerificationPage = () => {
     
     <div className='bg-[#F2FAFF] min-h-screen'>
       <HeaderInfo />
+      <div className="pt-32">
+</div>
       <div className='py-6 px-5 text-center'>
        <h3> You need to create an account to list new properties</h3>
        <p>If you've not created an account, please click this link to {" "}

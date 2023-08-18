@@ -117,12 +117,16 @@ const VerificationForm = () => {
   };
   return (
     <>
+    
       {loading && <Spinner />}
+      
       {submissionSuccess && (<SubmissionSuccessful isOpen={submissionSuccess} setIsOpen={setSubmissionSuccess} />)}
       {accountNotfound && (<AccountNotFound isOpen={accountNotfound} setIsOpen={setAccountNotFound} />)}
+      
+     
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" shadow-md px-4 flex  bg-white rounded-md flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
+        className=" shadow-md px-4 flex  bg-white rounded-md  flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
       >
         <div className="flex flex-col gap-3">
           <label className="font-semibold" htmlFor="">

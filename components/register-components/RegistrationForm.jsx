@@ -80,9 +80,13 @@ const RegistrationForm = ({ setIsOpen }) => {
     <>
       {loading && <Spinner />}
       {accountExist && (<AccountExists isOpen={accountExist} setIsOpen={setAccountExist} />)}
+      
+      <div className="pt-32">
+
+      </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" box-shadow px-4 flex bg-white rounded-md flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
+        className=" box-shadow px-4 flex bg-white rounded-md flex-col  space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
       >
         <div className="flex flex-col gap-3">
           <label className="font-semibold" htmlFor="">
