@@ -24,7 +24,7 @@ const HeroBanner = () =>{
      variants={container} 
      
      className='w-full header-bg flex items-center justify-center  h-screen pt-32 pb-8' >
-        <div className=' flex  flex-col w-full h-full  justify-center items-center '>
+        <div className=' flex  flex-col px-4 w-full h-full  justify-center items-center '>
         <div className="flex flex-col items-center justify-center space-y-3">
             <h3 variants={fadeIn("down")} className='text-white text-center leading-16 md:max-w-2xl font-semibold text-2xl md:text-4xl'>Find Your Dream Apartment</h3>
 
@@ -37,7 +37,7 @@ const HeroBanner = () =>{
 
 
             </div>
-            <div className='bg-white px-2 shadow-md grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 py-4 rounded-md'>
+            <div className='bg-white px-4 shadow-md grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 py-4 rounded-md'>
             <input type="text" placeholder='Enter Keyword' className='py-3 w-full px-2 rounded-md border-[#ebebeb]  border' />
 
             <select className='border border-[#ebebeb] py-3 bg-white px-2 rounded-md w-full' name="" id="">

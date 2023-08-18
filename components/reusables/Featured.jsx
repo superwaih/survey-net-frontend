@@ -10,7 +10,7 @@ const Featured = () => {
         <h3 className="font-semibold text-xl">Featured Properties</h3>
         <p>These are our featured properties</p>
       </div>
-      <div className='py-12 px-5 md:px-12  grid grid-cols-1 lg:grid-cols-2 gap-5 '>
+      <div className='py-12 px-5 m-auto place-content-center place-items-center w-full md:w-[80%] md:px-12  grid grid-cols-1 lg:grid-cols-2 gap-5 '>
             {featuredPlaces.map((place) => {
                 return(
                     <div key={place.id} className='flex w-fit md:flex-row flex-col border-[#ebebeb]  text-[#666] hover:scale-105 gap-4 cursor-pointer transition-all duration-300 bg-white rounded-lg shadow-md border'>

@@ -3,6 +3,7 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 const HeaderInfo = ({size}) => {
+  const router = useRouter()
   const [isVisible, setIsVisible] = useState(false);
 
     const toggleVisibility = () => {
@@ -36,14 +37,14 @@ const HeaderInfo = ({size}) => {
         src={"/bg/logo.png"}
         alt=""
       />
-      Effulgence Homes
+     <h3 className='md:flex hidden'> Effulgence Homes</h3>
       </div>
     </Link>
 
     <div className="flex justify-between gap-4">
       <button 
       onClick={() => router.push("/register")}
-      className="bg-red-500 p-2 md:p-3 md:px-4 rounded-md shadow-md text-white">
+      className="bg-red-500 p-2 md:p-3 md:px-8 rounded-md shadow-md text-white">
         Add Listing
       </button>
 

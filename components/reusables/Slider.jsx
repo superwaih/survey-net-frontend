@@ -9,15 +9,19 @@ const Slider = () => {
         0: {
           items: 1,
         },
-        750: {
+
+        512: {
           items: 2,
         },
+        1000:{
+          items: 3
+        }
       };
 
     
     const items = featuredPlaces.map((place) => {
         return(
-            <div key={place.id} className='flex w-fit mx-3  flex-col border-[#ebebeb]  text-[#666]  gap-4 cursor-pointer transition-all duration-300 bg-white rounded-lg shadow-md border'>
+            <div key={place.id} className='flex w-fit mx-3 items-center justify-center max-w-md  flex-col border-[#ebebeb]  text-[#666]   gap-4 cursor-pointer transition-all duration-300 bg-white rounded-lg shadow-md border'>
                 <Image
                     width={500}
                     height={500}
@@ -55,11 +59,13 @@ const Slider = () => {
         )
     })
   return (
-    <div className='py-5 bg-[#FF385C] pb-8 px-5'>
+    <div className='py-5 bg-[#FF385C] flex  flex-col items-center justify-center pb-8 px-5'>
          <div className="flex text-white flex-col w-full pb-5  items-center justify-center text-center space-y-4">
-        <h3 className="font-semibold text-xl">Why Choose Us</h3>
+        <h3 className="font-semibold text-xl">Discover Popular Properties</h3>
         <p>We provide full service at every step.</p>
       </div>
+      <div  className="m-auto w-full md:w-[70%]">
+
         <AliceCarousel
         mouseTracking
         // infinite
@@ -69,8 +75,10 @@ const Slider = () => {
         disableButtonsControls
         responsive={responsive}
         items={items}
+       
         // autoPlay
       />
+      </div>
     </div>
   )
 }

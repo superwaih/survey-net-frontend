@@ -37,9 +37,9 @@ const SuccessPage = () => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col shadow-lg rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md">
+        <div className="flex flex-col shadow-lg text-xl rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md">
           <h3>
-            Dear <span className="font-bold">{userObject?.email}</span>, your
+            Dear <span className="font-bold ">{userObject?.email}</span>, your
             information has been recieved{" "}
           </h3>
           {/* <AiFillCheckCircle className='text-5xl text-green-500' /> */}
@@ -59,9 +59,7 @@ const SuccessPage = () => {
             </p>
           )}
 
-          {/* <button
-            className="bg-red-500 p-3 rounded-md shadow-md text-white w-full py-4"
-            >Proceed to make payment now</button> */}
+    
           <FlutterWaveBtn user={userObject} />
         </div>
       )}
