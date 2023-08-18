@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Landing Page</title>
+        <title>Havens by effulgence homes</title>
       </Head>
     <main className={` ${inter.className}`}>
    <HeaderInfo size={size} />
