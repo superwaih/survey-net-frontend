@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { AiOutlineHome } from 'react-icons/ai'
 const HeaderInfo = () => {
     const router = useRouter()
+    
    
   return (
     <header className=" w-full  border-b-2 fixed shadow-md head-col text-white border-white">

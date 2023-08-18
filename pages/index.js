@@ -11,6 +11,7 @@ import HeroBanner from "@/components/reusables/HeroBanner";
 import Popular from "@/components/reusables/Popular";
 import Featured from "@/components/reusables/Featured";
 import ChooseUs from "@/components/reusables/ChooseUs";
+import Slider from "@/components/reusables/Slider";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
    <Popular />
    <Featured />
    <ChooseUs />
+   <Slider />
    {/* <div
         className="w-[80%] mt-4 m-auto
         "
