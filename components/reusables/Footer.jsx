@@ -47,11 +47,13 @@ const Footer = () => {
   <div className="text-color py-3">
     <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Navigation</h3>
     <div className="py-3">
-        <p className="hover:text-[#FF385C] hover:underline">Properties</p>
-        <p className="hover:text-[#FF385C] hover:underline">Properties List</p>
-        <p className="hover:text-[#FF385C] hover:underline">About Us</p>
-        <p className="hover:text-[#FF385C] hover:underline">Blog</p>
-        <p className="hover:text-[#FF385C] hover:underline">Contact us</p>
+        <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Properties</p>
+        <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Properties List</p>
+        <Link href={"/about"}>
+        <p className="hover:text-[#FF385C] border-b w-fit hover:underline">About Us</p>
+        </Link>
+        <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Blog</p>
+        <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Contact us</p>
     </div>
     
   </div>
