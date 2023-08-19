@@ -76,12 +76,19 @@ const HeaderInfo = ({toggleSidebar, setToggleSidebar, about}) => {
   }
    </div>
 
-  {!toggleSidebar && (  <div className="flex justify-between gap-4">
+  {!toggleSidebar && (  
+  
+  <div className="flex justify-between gap-4">
+     {router.pathname.includes("register") || router.pathname.includes("verify")? 
       <button 
       onClick={() => router.push("/register")}
       className="bg-red-500 p-2 md:p-3 md:px-8 rounded-md shadow-md text-white">
+       Register
+      </button> :  <button 
+      onClick={() => router.push("/register")}
+      className="bg-red-500 p-2 md:p-3 md:px-8 rounded-md shadow-md text-white">
         Add Listing
-      </button>
+      </button>}
     </div>) }
     {
       toggleSidebar && (
