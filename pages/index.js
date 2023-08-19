@@ -6,7 +6,7 @@ import Head from "next/head";
 import { motion } from 'framer-motion'
 import { fadeIn } from '@/variants'
 
-
+import Sidebar from "@/components/reusables/Sidebar"
 import HeroBanner from "@/components/reusables/HeroBanner";
 import Popular from "@/components/reusables/Popular";
 import Featured from "@/components/reusables/Featured";
@@ -14,20 +14,21 @@ import ChooseUs from "@/components/reusables/ChooseUs";
 import Slider from "@/components/reusables/Slider";
 import { useWindowSize } from "@uidotdev/usehooks";
 import Footer from "@/components/reusables/Footer";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter()
-  const size = useWindowSize();
-// console.log(size.height)
+ const [toggleSidebar, setToggleSidebar] = useState(false)
   return (
     <>
       <Head>
-        <title>Havens by effulgence homes</title>
+        <title>HAVENS BY EFFULGENCE HOMES</title>
       </Head>
-    <main className={` ${inter.className}`}>
-   <HeaderInfo size={size} />
+    <main className={`relative ${inter.className}`}>
+   <HeaderInfo toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+   {toggleSidebar && (<Sidebar />)}
    <HeroBanner />
    <Popular />
    <Featured />

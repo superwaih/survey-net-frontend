@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router'
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
-import Link from 'next/link'
+
 import Image from 'next/image'
-const HeaderInfo = ({size}) => {
+import Link from 'next/link'
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
+const HeaderInfo = ({toggleSidebar, setToggleSidebar}) => {
   const router = useRouter()
   const [isVisible, setIsVisible] = useState(false);
 
@@ -24,33 +26,59 @@ const HeaderInfo = ({size}) => {
    
   return (
     <header  
-    className={isVisible ? "w-full upper  border-b-2 fixed shadow-md bg-white text-white border-white": "w-full  border-b-2 fixed shadow-md head-col text-white upper border-white"}
+    className={isVisible ? "w-full   border-b-2 fixed upper shadow-md bg-white text-white border-white": "w-full  border-b-2 fixed shadow-md head-col text-white upper border-white"}
     
     >
-    <div className='flex px-2 py-2 md:py-5 items-center  m-auto   lg:flex-row justify-between w-[80%]'>
-    <Link href="/">
+    <div className='flex px-2 py-2 md:py-5 items-center  m-auto   lg:flex-row justify-between w-[90%]'>
+   <div
+   onClick={() => setToggleSidebar(!toggleSidebar)}
+   className='p-3 bg-[#eee] md:hidden flex cursor-pointer rounded-sm'>
+    {toggleSidebar ? <AiOutlineClose className='text-2xl text-black' /> : <AiOutlineMenu className='text-2xl text-black' />}
+   </div>
+   
+   <div className='flex justify-between gap-8'>
+   <Link href="/">
     <div className='font-italic text-black flex items-center gap-2 font-bold text-lg'>
       <Image
-        width={90}
-        height={90}
-        objectFit="cover"
+        width={80}
+        height={80}
         src={"/bg/logo.png"}
         alt=""
       />
-     <h3 className='md:flex hidden'> Effulgence Homes</h3>
+     <h3 className={isVisible ? "text-black md:flex hidden" : "text-[#eee] md:flex hidden"}> Effulgence Homes</h3>
       </div>
     </Link>
 
-    <div className="flex justify-between gap-4">
+    <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' : 'text-white md:flex hidden items-center justify-evenly '}>
+     <Link href={"/"}>
+     <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Home</li>
+     </Link>
+      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Property</li>
+     <Link href={"/about"}>
+     <li className='hover:bg-[#FF385C] hover:text-white hover:p-3 hover:rounded-md px-3'>
+        About us
+      </li></Link>
+      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Blog</li>
+      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
+    </ul>
+   </div>
+
+  {!toggleSidebar && (  <div className="flex justify-between gap-4">
       <button 
       onClick={() => router.push("/register")}
       className="bg-red-500 p-2 md:p-3 md:px-8 rounded-md shadow-md text-white">
         Add Listing
       </button>
-
-
-    
-    </div>
+    </div>) }
+    {
+      toggleSidebar && (
+        <div
+   onClick={() => setToggleSidebar(!toggleSidebar)}
+   className='p-3 bg-[#eee] md:hidden flex cursor-pointer rounded-sm'>
+    {toggleSidebar ? <AiOutlineClose className='text-2xl text-black' /> : <AiOutlineMenu className='text-2xl text-black' />}
+   </div>
+      )
+    }
     </div>
   </header>
   )

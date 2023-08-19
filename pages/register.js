@@ -6,9 +6,11 @@ import RegistrationForm from '@/components/register-components/RegistrationForm'
 import Head from 'next/head'
 import Spinner from '@/components/reusables/Spinner'
 import RegistrationSuccessful from '@/components/modal/RegistrationSuccessful'
+import Sidebar from '../components/reusables/Sidebar'
 
 const RegisterPage = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [toggleSidebar, setToggleSidebar] = useState(false)
 
   return (
     <>
@@ -18,7 +20,8 @@ const RegisterPage = () => {
     
     
     <div className='bg-[#F2FAFF] min-h-screen'>
-      <HeaderInfo />
+    <HeaderInfo toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+   {toggleSidebar && (<Sidebar />)}
       {/* <div className='w-full flex items-center justify-center relative h-[400px]'>
         <Image
           // width={500}

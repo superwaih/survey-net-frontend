@@ -1,11 +1,15 @@
 import RegistrationForm from '@/components/register-components/RegistrationForm'
 import VerificationForm from '@/components/register-components/VerificationForm'
 import HeaderInfo from '@/components/reusables/Header'
-import React from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
  import Link from 'next/link'
+import Sidebar from "@/components/reusables/Sidebar"
+
 
 const VerificationPage = () => {
+ const [toggleSidebar, setToggleSidebar] = useState(false)
+
   return (
 
     <>
@@ -14,7 +18,8 @@ const VerificationPage = () => {
       </Head>
     
     <div className='bg-[#F2FAFF] min-h-screen'>
-      <HeaderInfo />
+    <HeaderInfo toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+   {toggleSidebar && (<Sidebar />)}
       <div className="pt-32">
 </div>
       <div className='py-6 px-5 text-center'>

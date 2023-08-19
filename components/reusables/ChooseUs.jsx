@@ -1,9 +1,9 @@
 import { choose } from '@/assets/data'
 import React from 'react'
 
-const ChooseUs = () => {
+const ChooseUs = ({about}) => {
   return (
-    <div className="flex flex-col  text-[#666] py-12 w-full">
+    <div   className= {about ?'bg-[#f5f7fb] flex flex-col  text-[#666] py-12 w-full' : 'flex flex-col  text-[#666] py-12 w-full'  }>
          <div className="flex flex-col w-full  items-center justify-center text-center space-y-4">
         <h3 className="font-semibold text-xl">Why Choose Us</h3>
         <p>We provide full service at every step.</p>
