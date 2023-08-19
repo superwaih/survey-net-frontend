@@ -27,8 +27,10 @@ export default function Home() {
       <Head>
         <title>About Us</title>
       </Head>
-      <main className={`relative ${inter.className}`}>
-        <div className="m-auto w-[90%] py-6 md:w-[80%]">
+      <main className={`relative  ${inter.className}`}>
+        <HeaderInfo about toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+        {toggleSidebar && (<Sidebar />)}
+        <div className="m-auto pt-32 w-[90%] py-6 md:w-[80%]">
           <h3 className="text-center text-2xl font-extrabold md:text-3xl lg:text-5xl text-[#666]">
             ABOUT OUR COMPANY
           </h3>

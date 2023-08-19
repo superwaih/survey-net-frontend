@@ -4,7 +4,7 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
-const HeaderInfo = ({toggleSidebar, setToggleSidebar}) => {
+const HeaderInfo = ({toggleSidebar, setToggleSidebar, about}) => {
   const router = useRouter()
   const [isVisible, setIsVisible] = useState(false);
 
@@ -45,11 +45,23 @@ const HeaderInfo = ({toggleSidebar, setToggleSidebar}) => {
         src={"/bg/logo.png"}
         alt=""
       />
-     <h3 className={isVisible ? "text-black md:flex hidden" : "text-[#eee] md:flex hidden"}> Effulgence Homes</h3>
+     <h3 className={isVisible ? "text-black md:flex hidden" : "text-black md:flex hidden"}> Effulgence Homes</h3>
       </div>
     </Link>
 
-    <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' : 'text-white md:flex hidden items-center justify-evenly '}>
+  {
+    about ?   <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' :  'text-black md:flex hidden items-center justify-evenly '}>
+    <Link href={"/"}>
+    <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Home</li>
+    </Link>
+     <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Property</li>
+    <Link href={"/about"}>
+    <li className='hover:bg-[#FF385C] hover:text-white hover:p-3 hover:rounded-md px-3'>
+       About us
+     </li></Link>
+     <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Blog</li>
+     <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
+   </ul> :   <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' :  'text-white md:flex hidden items-center justify-evenly '}>
      <Link href={"/"}>
      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Home</li>
      </Link>
@@ -61,6 +73,7 @@ const HeaderInfo = ({toggleSidebar, setToggleSidebar}) => {
       <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Blog</li>
       <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
     </ul>
+  }
    </div>
 
   {!toggleSidebar && (  <div className="flex justify-between gap-4">
