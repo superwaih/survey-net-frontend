@@ -2,9 +2,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+html{
+  scroll-behavior: smooth;
+}
+.upper{
+  z-index: 999999;
+}
 body{
     font-family: 'Poppins', sans-serif;
+}
+.text-color{
+  color: rgba(245, 255, 255, 0.8);
+}
+.bgcolor{
+  background: rgba(245, 255, 255, 0.5);
 }
 .box-shadow{
     -webkit-box-shadow: 0 0 25px rgba(0,0,0,0.2);

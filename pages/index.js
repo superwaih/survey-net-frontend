@@ -13,6 +13,7 @@ import Featured from "@/components/reusables/Featured";
 import ChooseUs from "@/components/reusables/ChooseUs";
 import Slider from "@/components/reusables/Slider";
 import { useWindowSize } from "@uidotdev/usehooks";
+import Footer from "@/components/reusables/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function Home() {
    <Featured />
    <ChooseUs />
    <Slider />
+   <Footer />
    {/* <div
         className="w-[80%] mt-4 m-auto
         "

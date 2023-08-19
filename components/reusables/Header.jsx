@@ -24,7 +24,7 @@ const HeaderInfo = ({size}) => {
    
   return (
     <header  
-    className={isVisible ? "w-full  border-b-2 fixed shadow-md bg-white text-white border-white": "w-full  border-b-2 fixed shadow-md head-col text-white border-white"}
+    className={isVisible ? "w-full upper  border-b-2 fixed shadow-md bg-white text-white border-white": "w-full  border-b-2 fixed shadow-md head-col text-white upper border-white"}
     
     >
     <div className='flex px-2 py-2 md:py-5 items-center  m-auto   lg:flex-row justify-between w-[80%]'>
