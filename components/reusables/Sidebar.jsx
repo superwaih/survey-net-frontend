@@ -5,8 +5,9 @@ import {AiFillHome} from "react-icons/ai"
 const Sidebar = () => {
     const router = useRouter()
   return (
-    <div className='w-[250px] py-4 absolute upper top-0 bottom-0 left-0 bg-[#262626]'>
-        <div className='border-b border-slate-400 py-4'>
+    <div className='w-[260px] py-4 absolute upper top-0 bottom-0 left-0 bg-[#262626]'>
+    <div className='fixed w-[80%]'>
+    <div className='border-b border-slate-400 py-4'>
         <h3 className='text-center text-white uppercase'>Menu</h3>
         </div>
         <div>
@@ -34,6 +35,7 @@ const Sidebar = () => {
         Add Listing
       </button>
         </div>
+    </div>
     </div>
   )
 }
