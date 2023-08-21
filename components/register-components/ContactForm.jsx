@@ -7,7 +7,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { toast } from "react-toastify";
 import Spinner from "../reusables/Spinner";
 import AccountExists from "../modal/AccountExists";
-const RegistrationForm = ({ setIsOpen }) => {
+const ContactForm = ({ setIsOpen }) => {
   const { loading, setLoading, setRegData } = useUserContext();
   const[accountExist, setAccountExist] = useState(false)
   const [showPassword, setShowPassword] = useState(false);
@@ -21,59 +21,59 @@ const RegistrationForm = ({ setIsOpen }) => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (formdata) => {
-    setLoading(true);
-    const newForm = {
-      email: formdata.email,
-      firstname: formdata.firstname,
-      lastname: formdata.lastname,
-      phone_number: formdata.phone_number,
-    };
+    // setLoading(true);
+    // const newForm = {
+    //   email: formdata.email,
+    //   firstname: formdata.firstname,
+    //   lastname: formdata.lastname,
+    //   phone_number: formdata.phone_number,
+    // };
   
-    const config = { "content-type": "application/json" };
-    try {
-      const { data } = await axios.post(
-        "https://survey-net-backend.vercel.app/api/users/create",
+    // const config = { "content-type": "application/json" };
+    // try {
+    //   const { data } = await axios.post(
+    //     "https://survey-net-backend.vercel.app/api/users/create",
 
-        newForm,
-        config
-      );
-      setLoading(false);
+    //     newForm,
+    //     config
+    //   );
+    //   setLoading(false);
      
-      if (data.status == 201) {
-        toast.success(
-          "You just created an account, You will be redirected verification page",
-          {
-            position: "top-right",
-            autoClose: 7000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          }
-        );
-        setRegData(data.payload);
-        setIsOpen(true);
-      }
-    } catch (error) {
+    //   if (data.status == 201) {
+    //     toast.success(
+    //       "You just created an account, You will be redirected verification page",
+    //       {
+    //         position: "top-right",
+    //         autoClose: 7000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //       }
+    //     );
+    //     setRegData(data.payload);
+    //     setIsOpen(true);
+    //   }
+    // } catch (error) {
       
-     if(error?.response?.data?.payload === "user already exists"){
-      setAccountExist(true)
-     }
-      toast.error(`${error?.response?.data?.payload}`, {
-        position: "top-right",
-        autoClose: 7000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      setLoading(false);
+    //  if(error?.response?.data?.payload === "user already exists"){
+    //   setAccountExist(true)
+    //  }
+    //   toast.error(`${error?.response?.data?.payload}`, {
+    //     position: "top-right",
+    //     autoClose: 7000,
+    //     hideProgressBar: false,
+    //     closeOnClick: true,
+    //     pauseOnHover: true,
+    //     draggable: true,
+    //     progress: undefined,
+    //     theme: "light",
+    //   });
+    //   setLoading(false);
     
-    }
+    // }
   };
 
   return (
@@ -166,35 +166,37 @@ const RegistrationForm = ({ setIsOpen }) => {
             </small>
           )}
         </div>
-        {/* <div className="flex flex-col  gap-3 mb-3">
-        <label htmlFor="">Password</label>
-        <div className="relative w-full">
-          <input
-            {...register("password", { required: true })}
-            className="px-3 w-full py-4 border border-yellow-400 rounded-md"
-            type={showPassword ? "text" : "password"}
-            placeholder="please enter your password"
+        <div className="flex flex-col gap-3">
+          <label htmlFor="">Email</label>
+          <textarea
+            {...register("message", { required: true, pattern: /^\S+@\S+$/i })}
+            className="px-3 py-4 border border-yellow-400 rounded-md"
+         type="text"
+            placeholder="please enter message"
           />
-
-          <div
-            onClick={() => setShowPassword(!showPassword)}
-            className="cursor-pointer text-xl absolute right-2 top-[30%]"
-          >
-            {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
-          </div>
+          {errors.email?.type === "required" && (
+            <small className="text-red-400 font-semibold">
+              Please enter your message
+            </small>
+          )}
+          {errors.email?.type === "pattern" && (
+            <small className="text-red-400 font-semibold">
+              Please enter a valid email address
+            </small>
+          )}
         </div>
-      </div> */}
+        
 
         <button
           type="submit"
           disabled={loading}
           className="bg-red-500 disabled:opacity-50 p-3 rounded-md shadow-md text-white w-full py-4"
         >
-          {loading ? "Loading ..." : " Create Account"}
+          {loading ? "Loading ..." : " Contact us"}
         </button>
       </form>
     </>
   );
 };
 
-export default RegistrationForm;
+export default ContactForm;

@@ -4,7 +4,7 @@ import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
-const HeaderInfo = ({toggleSidebar, setToggleSidebar, about}) => {
+const HeaderInfo = ({toggleSidebar, small, setToggleSidebar, about}) => {
   const router = useRouter()
   const [isVisible, setIsVisible] = useState(false);
 
@@ -26,10 +26,12 @@ const HeaderInfo = ({toggleSidebar, setToggleSidebar, about}) => {
    
   return (
     <header  
-    className={isVisible ? "w-full   border-b-2 fixed upper shadow-md bg-white text-white border-white": "w-full  border-b-2 fixed shadow-md head-col text-white upper border-white"}
+    className={isVisible ? `w-full   border-b-2 fixed upper shadow-md bg-white text-white border-white` : 
+    small ?`w-full upper  border-b-2 fixed shadow-md bg-white text-white upper border-white` :
+    `w-full upper  border-b-2 fixed shadow-md head-col text-white upper border-white`}
     
     >
-    <div className='flex px-2 py-2 md:py-5 items-center  m-auto   lg:flex-row justify-between w-[90%]'>
+    <div className='flex  items-center  m-auto   lg:flex-row justify-between w-[90%]'>
    <div
    onClick={() => setToggleSidebar(!toggleSidebar)}
    className='p-3 bg-[#eee] md:hidden flex cursor-pointer rounded-sm'>
@@ -38,10 +40,10 @@ const HeaderInfo = ({toggleSidebar, setToggleSidebar, about}) => {
    
    <div className='flex justify-between gap-8'>
    <Link href="/">
-    <div className='font-italic text-black flex items-center gap-2 font-bold text-lg'>
+    <div className=' text-black flex items-center gap-2 font-bold text-lg'>
       <Image
-        width={80}
-        height={80}
+        width={120}
+        height={120}
         src={"/bg/logo.png"}
         alt=""
       />
@@ -71,7 +73,9 @@ const HeaderInfo = ({toggleSidebar, setToggleSidebar, about}) => {
         About us
       </li></Link>
       <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Blog</li>
+     <Link href={"/contact"}>
       <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
+     </Link>
     </ul>
   }
    </div>

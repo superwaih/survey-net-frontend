@@ -5,21 +5,17 @@ import {BiSolidEditLocation} from "react-icons/bi"
 import { AiFillMail, AiFillPhone, AiOutlineTwitter } from "react-icons/ai";
 const Footer = () => {
   return (
-    <footer className="bg-[#303441] py-7 text-sm">
+    <footer className="bg-[#303441] py-5 text-sm">
  <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 m-auto w-[90%]"> 
  <div>
   <Link href="/">
-        <div className="font-italic text-color flex items-center gap-2 font-bold text-lg">
+       
           <Image
-            width={90}
-            height={90}
-            objectFit="cover"
+            width={120}
+            height={120}
             src={"/bg/logo.png"}
             alt=""
           />
-          <h3 className="text-md"> Havens by effulgence home
-</h3>
-        </div>
       </Link>
       <p className="text-color">
       Nigeria's foremost destination for property seekers looking for their dream homes.
@@ -44,7 +40,7 @@ const Footer = () => {
       </div>
   </div>
 
-  <div className="text-color py-3">
+  <div className="text-color py-10">
     <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Navigation</h3>
     <div className="py-3">
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Properties</p>
@@ -53,11 +49,13 @@ const Footer = () => {
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">About Us</p>
         </Link>
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Blog</p>
+        <Link href={"/contact"}>
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Contact us</p>
+        </Link>
     </div>
     
   </div>
-  <div className="text-color py-3">
+  <div className="text-color py-10">
     <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Instagram feeds</h3>
     <div className="py-3">
       <AiOutlineTwitter className="hover:text-[#FF385C] underline hover:underline" />
@@ -68,7 +66,7 @@ const Footer = () => {
     
   </div>
 
-  <div className="text-color py-3">
+  <div className="text-color py-10">
     <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Newsletter</h3>
     <div className="py-3">
        <p>
@@ -86,7 +84,7 @@ const Footer = () => {
  <div className="w-full h-[1px] my-4 bg-slate-300">
 
  </div>
- <div className="px-4 text-color">
+ <div className="px-4 text-center text-color">
   <p>2023 © Copyright - Havens By Effulgence Home.</p>
  </div>
     </footer>

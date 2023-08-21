@@ -7,6 +7,7 @@ import Head from 'next/head'
 import Spinner from '@/components/reusables/Spinner'
 import RegistrationSuccessful from '@/components/modal/RegistrationSuccessful'
 import Sidebar from '../components/reusables/Sidebar'
+import Footer from '@/components/reusables/Footer'
 
 const RegisterPage = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -20,7 +21,7 @@ const RegisterPage = () => {
     
     
     <div className='bg-[#F2FAFF] min-h-screen'>
-    <HeaderInfo toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+    <HeaderInfo about small toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
    {toggleSidebar && (<Sidebar />)}
       {/* <div className='w-full flex items-center justify-center relative h-[400px]'>
         <Image
@@ -37,6 +38,7 @@ const RegisterPage = () => {
       <RegistrationForm isOpen={isOpen} setIsOpen={setIsOpen} />
 
     </div>
+    <Footer />
     {isOpen && (<RegistrationSuccessful isOpen={isOpen} setIsOpen={setIsOpen} />)}
     </>
   )

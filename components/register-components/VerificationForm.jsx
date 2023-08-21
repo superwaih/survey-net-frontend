@@ -74,7 +74,7 @@ const VerificationForm = () => {
     try {
       const config = { "content-type": "application/json" };
       const { data } = await axios.put(
-        `https://survey-net-backend.onrender.com/api/users/update/${formdata.email}`,
+        `https://survey-net-backend.vercel.app/api/users/update/${formdata.email}`,
 
         newData,
         config
@@ -102,18 +102,8 @@ const VerificationForm = () => {
     } catch (error) {
       setLoading(false);
       setAccountNotFound(true)
-      // toast.error("An Error Occured", {
-      //   position: "top-right",
-      //   autoClose: 7000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "light",
-      // });
+    
     }
-    // router.push("/success")
   };
   return (
     <>
@@ -203,7 +193,7 @@ const VerificationForm = () => {
                 Survey Number
               </label>
               <input
-                {...register("survey_number", { required: true })}
+                {...register("survey_number", { required: true, pattern: /^OY\/\d{4}\/\d{4}\/\d{2}$/ })}
                 className="px-3 py-4 border border-yellow-400 rounded-md"
                 type="text"
                 placeholder="Please survey number"
@@ -256,8 +246,8 @@ const VerificationForm = () => {
             <input
               {...register("cof_number", {
                 required: true,
-                maxLength: 15,
-                minLength: 3,
+                
+                pattern: /^[a-zA-Z]8544378$/
               })}
               className="px-3 py-4 border border-yellow-400 rounded-md"
               type="text"

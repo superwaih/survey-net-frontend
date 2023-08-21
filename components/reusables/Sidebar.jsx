@@ -25,9 +25,11 @@ const Sidebar = () => {
             <div className='border-b py-4 border-slate-400'>
                 <h2 className='text-white px-3 text-sm'>Blog</h2>
             </div>
+            <Link href={"/contact"}>
             <div className='border-b py-4 cursor-pointer border-slate-400'>
                 <h2 className='text-white px-3 text-sm'>Contact</h2>
             </div>
+            </Link>
         <button 
       onClick={() => router.push("/register")}
       className="bg-red-500 w-4/5 flex items-center gap-4 justify-center py-3  my-3 p-2 mx-2 md:p-3 md:px-8 rounded-md shadow-md text-white">

@@ -18,7 +18,7 @@ const VerificationPage = () => {
       </Head>
     
     <div className='bg-[#F2FAFF] min-h-screen'>
-    <HeaderInfo toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
+    <HeaderInfo small about toggleSidebar={toggleSidebar} setToggleSidebar={setToggleSidebar} />
    {toggleSidebar && (<Sidebar />)}
       <div className="pt-32">
 </div>

@@ -17,7 +17,7 @@ const AdminPage = () => {
   const fetchAllUsers = async() =>{
     setLoading(true)
     try {
-      const {data} = await axios.get("https://survey-net-backend.onrender.com/api/users/all")
+      const {data} = await axios.get("https://survey-net-backend.vercel.app/api/users/all")
       
       setAllUsers(data)
       setLoading(false)
@@ -30,7 +30,7 @@ const AdminPage = () => {
   const handleSuccessfulStatus = async(email) =>{
     setLoading(true)
     try {
-      const {data} = await axios.put(`https://survey-net-backend.onrender.com/api/users/updatestatus/${email}`,
+      const {data} = await axios.put(`https://survey-net-backend.vercel.app/api/users/updatestatus/${email}`,
       {
         verified_status: true
       }
@@ -77,7 +77,7 @@ const AdminPage = () => {
     setLoading(true)
     
     try {
-      const {data} = await axios.put(`https://survey-net-backend.onrender.com/api/users/updatestatus/${email}`,
+      const {data} = await axios.put(`https://survey-net-backend.vercel.app/api/users/updatestatus/${email}`,
       {
         verified_status: false
       }
