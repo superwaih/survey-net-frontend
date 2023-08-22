@@ -24,9 +24,9 @@ const SuccessPage = () => {
   return (
     <>
     {loading && <Spinner />}
-    <div className="h-screen w-full p-4 flex items-center justify-center bg-[#F2FAFF]">
+    <div className="h-screen w-full p-4 flex items-center justify-center bg-[#5483a0]">
       {paymentSuccess ? (
-        <div className="flex flex-col shadow-lg rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md">
+        <div className="flex text-lg md:text-xl  flex-col shadow-lg rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md">
           <h3>Transaction successful</h3>
           <p>
             Please proceed to your dashboard, while our admins verify your
@@ -37,10 +37,10 @@ const SuccessPage = () => {
           </p>
         </div>
       ) : (
-        <div className="flex flex-col shadow-lg text-xl rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md">
+        <div className="flex  flex-col text-center leading-7 shadow-lg text-lg md:text-xl rounded-md  space-y-4 bg-white py-4 px-3  items-center justify-center max-w-md">
           <h3>
             Dear <span className="font-bold ">{userObject?.email}</span>, your
-            information has been recieved{" "}
+            information has been recieved{"."}
           </h3>
           {/* <AiFillCheckCircle className='text-5xl text-green-500' /> */}
           {submissionType === "surveyor_method" ? (

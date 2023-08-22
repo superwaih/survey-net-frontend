@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import Head from 'next/head'
  import Link from 'next/link'
 import Sidebar from "@/components/reusables/Sidebar"
+import Footer from '@/components/reusables/Footer'
 
 
 const VerificationPage = () => {
@@ -31,6 +32,7 @@ const VerificationPage = () => {
        </p>
       </div>
      <VerificationForm />
+     <Footer />
     </div>
     </>
   )

@@ -46,12 +46,12 @@ export default function AccountExists({isOpen, setIsOpen}) {
                 <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-xl font-bold text-center leading-6 text-gray-900"
                   >
                     You've already created an account
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-md text-gray-500">
+                    <p className="text-md text-center font-semibold text-gray-500">
                      Please click on the button below to proceed to the verification page.
                     </p>
                   </div>
@@ -59,7 +59,7 @@ export default function AccountExists({isOpen, setIsOpen}) {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex justify-center rounded-md border w-full text-lg border-transparent bg-blue-100 px-4 py-4 font-semibold  text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Verify Documents

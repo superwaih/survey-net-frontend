@@ -47,7 +47,7 @@ const HeaderInfo = ({toggleSidebar, small, setToggleSidebar, about}) => {
         src={"/bg/logo.png"}
         alt=""
       />
-     <h3 className={isVisible ? "text-black md:flex hidden" : "text-black md:flex hidden"}> Effulgence Homes</h3>
+     <h3 className={isVisible ? "text-black lg:flex hidden" : "text-black lg:flex hidden"}> Effulgence Homes</h3>
       </div>
     </Link>
 
@@ -91,7 +91,7 @@ const HeaderInfo = ({toggleSidebar, small, setToggleSidebar, about}) => {
       </button> :  <button 
       onClick={() => router.push("/register")}
       className="bg-red-500 p-2 md:p-3 md:px-8 rounded-md shadow-md text-white">
-        Add Listing
+        Register
       </button>}
     </div>) }
     {

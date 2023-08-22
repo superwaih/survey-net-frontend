@@ -20,8 +20,8 @@ const VerificationForm = () => {
   const [imageOne, setImageOne] = useState("");
   const [convertingImage, setConvertingImage] = useState(false);
   const watchAll = watch(["document"]);
-  const[accountNotfound, setAccountNotFound] = useState(false)
-  const[submissionSuccess, setSubmissionSuccess] = useState(false)
+  const [accountNotfound, setAccountNotFound] = useState(false);
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
 
   const router = useRouter();
   const {
@@ -49,8 +49,9 @@ const VerificationForm = () => {
       conver2base64(watchAll[0][0]);
     }
   }, [watchAll]);
-  
+
   const onSubmit = async (formdata) => {
+    
     setLoading(true);
     let newData;
     if (submissionType === "surveyor_method") {
@@ -69,7 +70,6 @@ const VerificationForm = () => {
         verification_type: submissionType,
       };
     }
-    // console.log(newData)
     setUserObject(newData);
     try {
       const config = { "content-type": "application/json" };
@@ -79,9 +79,8 @@ const VerificationForm = () => {
         newData,
         config
       );
-      
-      
-      console.log(data)
+
+      console.log(data);
       if (data.msg == "done") {
         toast.success("Congratulations, Your request has been received", {
           position: "top-right",
@@ -96,24 +95,31 @@ const VerificationForm = () => {
 
         setUserObject(data.payload);
 
-        setSubmissionSuccess(true)
+        setSubmissionSuccess(true);
         setLoading(false);
-      } 
+      }
     } catch (error) {
       setLoading(false);
-      setAccountNotFound(true)
-    
+      setAccountNotFound(true);
     }
   };
   return (
     <>
-    
       {loading && <Spinner />}
-      
-      {submissionSuccess && (<SubmissionSuccessful isOpen={submissionSuccess} setIsOpen={setSubmissionSuccess} />)}
-      {accountNotfound && (<AccountNotFound isOpen={accountNotfound} setIsOpen={setAccountNotFound} />)}
-      
-     
+
+      {submissionSuccess && (
+        <SubmissionSuccessful
+          isOpen={submissionSuccess}
+          setIsOpen={setSubmissionSuccess}
+        />
+      )}
+      {accountNotfound && (
+        <AccountNotFound
+          isOpen={accountNotfound}
+          setIsOpen={setAccountNotFound}
+        />
+      )}
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className=" shadow-md px-4 flex  bg-white rounded-md  flex-col space-y-10 py-4 m-auto w-full md:w-[70%] max-w-md my-5 "
@@ -141,25 +147,15 @@ const VerificationForm = () => {
         </div>
         <div className="flex flex-col gap-3">
           <label className="font-semibold" htmlFor="">
-           State
+            State
           </label>
           <select
             {...register("state", { required: true })}
             className="px-3 py-4 border border-yellow-400 rounded-md"
-          
           >
             <option value="Oyo">Oyo state</option>
           </select>
-          {errors.email?.type === "required" && (
-            <small className="text-red-400 font-semibold">
-              Please enter your email address
-            </small>
-          )}
-          {errors.email?.type === "pattern" && (
-            <small className="text-red-400 font-semibold">
-              Please enter a valid email address
-            </small>
-          )}
+       
         </div>
         <div className="flex flex-col space-y-3">
           <label className="font-bold" htmlFor="">
@@ -192,30 +188,29 @@ const VerificationForm = () => {
               <label className="font-semibold" htmlFor="">
                 Survey Number
               </label>
+              <small className="text-[12px]  font-semibold">
+                Format: OY/1234/1996/12
+              </small>
               <input
-                {...register("survey_number", { required: true, pattern: /^OY\/\d{4}\/\d{4}\/\d{2}$/ })}
-                className="px-3 py-4 border border-yellow-400 rounded-md"
+                {...register("survey_number", {
+                  required: true,
+                  pattern: /^OY\/\d{4}\/\d{4}\/\d{2}$/,
+                })}
+                className="px-3 py-4 border   border-yellow-400 rounded-md"
                 type="text"
-                placeholder="Please survey number"
+                placeholder="Please enter survey number i.e OY/1234/1996/12"
               />
-              {errors.survey_number && (
+              {errors.survey_number === "required" && (
                 <div>
-                  <span>{errors.survey_number}</span>
-                </div>
-              )}
-              {errors.survey_number && (
-                <div>
-                  <span>{errors.survey_number}</span>
-                </div>
-              )}
-              {errors.survey_number?.type === "minLength" && (
-                <small className="text-red-400 font-semibold">
-                  survey number should more than 3 digits
+                 <small className="text-red-400 font-semibold">
+                  Please enter a survey number
                 </small>
+                </div>
               )}
-              {errors.survey_number?.type === "maxLength" && (
+
+              {errors.survey_number?.type === "pattern" && (
                 <small className="text-red-400 font-semibold">
-                  survey number should not be more than 15digits
+                  Please enter a valid survey number
                 </small>
               )}
             </div>
@@ -243,11 +238,14 @@ const VerificationForm = () => {
             <label className="font-semibold" htmlFor="">
               C of O Number
             </label>
+            <small className="text-red-900/50 font-semibold">
+              Format: A1234567
+            </small>
             <input
               {...register("cof_number", {
                 required: true,
-                
-                pattern: /^[a-zA-Z]8544378$/
+
+                pattern: /^[a-zA-Z]\d{7}$/,
               })}
               className="px-3 py-4 border border-yellow-400 rounded-md"
               type="text"
@@ -255,17 +253,12 @@ const VerificationForm = () => {
             />
             {errors.cof_number === "required" && (
               <small className="text-red-400 font-semibold">
-                Please enter C of O number
+                Please enter C of O number 
               </small>
             )}
-            {errors.cof_number?.type === "minLength" && (
+            {errors.cof_number?.type === "pattern" && (
               <small className="text-red-400 font-semibold">
-                COF number should more than 3 digits
-              </small>
-            )}
-            {errors.cof_number?.type === "maxLength" && (
-              <small className="text-red-400 font-semibold">
-                COF number should not be more than 15digits
+                Please enter a valid C Of O Number i.e a8544378
               </small>
             )}
           </div>

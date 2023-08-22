@@ -81,7 +81,7 @@ export default function FlutterWaveBtn({user}) {
     <div >
     
       <FlutterWaveButton
-            className="bg-red-500 p-3 rounded-md shadow-md text-white w-full py-4"
+            className="bg-red-500 p-3 hover:opacity-80 duration-300 transition-all rounded-md shadow-md text-white w-full py-4"
       
       {...fwConfig} />
     </div>
