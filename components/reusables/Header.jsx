@@ -47,12 +47,13 @@ const HeaderInfo = ({toggleSidebar, small, setToggleSidebar, about}) => {
         src={"/bg/logo.png"}
         alt=""
       />
-     <h3 className={isVisible ? "text-black lg:flex hidden" : "text-black lg:flex hidden"}> Effulgence Homes</h3>
+     {/* <h3 className={isVisible ? "text-black lg:flex hidden" : "text-black lg:flex hidden"}> Effulgence Homes</h3> */}
       </div>
     </Link>
 
   {
-    about ?   <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' :  'text-black md:flex hidden items-center justify-evenly '}>
+    about ?   
+    <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' :  'text-black md:flex hidden items-center justify-evenly '}>
     <Link href={"/"}>
     <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Home</li>
     </Link>
@@ -60,9 +61,11 @@ const HeaderInfo = ({toggleSidebar, small, setToggleSidebar, about}) => {
     <Link href={"/about"}>
     <li className='hover:bg-[#FF385C] hover:text-white hover:p-3 hover:rounded-md px-3'>
        About us
-     </li></Link>
-     <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Blog</li>
+     </li>
+     </Link>
+    <Link href={"/contact"}>
      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
+    </Link>
    </ul> :   <ul className={isVisible ? 'text-black items-center justify-evenly md:flex hidden ' :  'text-white md:flex hidden items-center justify-evenly '}>
      <Link href={"/"}>
      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Home</li>
@@ -74,7 +77,7 @@ const HeaderInfo = ({toggleSidebar, small, setToggleSidebar, about}) => {
       </li></Link>
       <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Blog</li>
      <Link href={"/contact"}>
-      <li className='hover:bg-[#FF385C] hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
+      <li className='hover:bg-[#FF385C] cursor-pointer hover:p-3 hover:text-white hover:rounded-md px-3'>Contact</li>
      </Link>
     </ul>
   }

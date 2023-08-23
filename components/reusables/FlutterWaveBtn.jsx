@@ -4,12 +4,12 @@ import axios from 'axios';
 import { useUserContext } from '@/context/UserProvider';
 import { toast } from 'react-toastify';
 
-export default function FlutterWaveBtn({user}) {
+export default function FlutterWaveBtn({user, survey_type}) {
   const {loading, setLoading, setPaymentSuccess} = useUserContext()
    const config = {
-    public_key: "FLWPUBK_TEST-f6cadd59b5a302f8ebb19e93f46fa398-X" ,
+    public_key: "FLWPUBK-c740e8a5275c9ca467456cf4e8737963-X" ,
     tx_ref: Date.now(),
-    amount: 1000,
+    amount: survey_type === "cof_method" ? 20000 : 10000,
     currency: 'NGN',
     payment_options: 'card,mobilemoney,ussd,banktransfer',
     customer: {
