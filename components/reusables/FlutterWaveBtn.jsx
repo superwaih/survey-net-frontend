@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 export default function FlutterWaveBtn({user, submissionType}) {
   const {loading, setLoading, setPaymentSuccess} = useUserContext()
    const config = {
-    public_key: process.env.PUBLIC_KEY ,
+    public_key: "FLWPUBK-c740e8a5275c9ca467456cf4e8737963-X",
     tx_ref: Date.now(),
     amount: submissionType === "cof_method" ? 20000 : 10000,
     currency: 'NGN',
