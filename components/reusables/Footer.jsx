@@ -6,7 +6,7 @@ import { AiFillMail, AiFillPhone, AiOutlineTwitter } from "react-icons/ai";
 const Footer = () => {
   return (
     <footer className="bg-[#303441] py-5 text-sm">
- <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 m-auto w-[90%]"> 
+ <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 m-auto w-[90%]"> 
  <div>
   <Link href="/">
        
@@ -40,8 +40,9 @@ const Footer = () => {
       </div>
   </div>
 
-  <div className="text-color py-10">
-    <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Navigation</h3>
+  <div className="text-color flex md:flex-row flex-col gap-8 w-full py-10">
+   <div>
+   <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Navigation</h3>
     <div className="py-3">
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Properties</p>
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Properties List</p>
@@ -53,18 +54,22 @@ const Footer = () => {
         <p className="hover:text-[#FF385C] border-b w-fit hover:underline">Contact us</p>
         </Link>
     </div>
-    
-  </div>
-  <div className="text-color py-10">
+   </div>
+
+    <div className="text-color">
     <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Instagram feeds</h3>
     <div className="py-3">
       <AiOutlineTwitter className="hover:text-[#FF385C] underline hover:underline" />
-        {/* <p className="hover:text-[#FF385C] underline hover:underline">We are trending</p> */}
         
 
     </div>
     
   </div>
+
+
+    
+  </div>
+ 
 
   <div className="text-color py-10">
     <h3 className="text-white underline underline-offset-4  decoration-[#FF385C]">Newsletter</h3>
