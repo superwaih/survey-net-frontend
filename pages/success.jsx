@@ -59,7 +59,7 @@ const SuccessPage = () => {
             </p>
           )}
 
-{userObject.email !== undefined && (<FlutterWaveBtn user={userObject} />)}
+{userObject.email !== undefined && (<FlutterWaveBtn submissionType={submissionType} user={userObject} />)}
     
           
         </div>

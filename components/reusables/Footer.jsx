@@ -6,7 +6,7 @@ import { AiFillMail, AiFillPhone, AiOutlineTwitter } from "react-icons/ai";
 const Footer = () => {
   return (
     <footer className="bg-[#303441] py-5 text-sm">
- <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 m-auto w-[90%]"> 
+ <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 m-auto w-[80%]"> 
  <div>
   <Link href="/">
        
