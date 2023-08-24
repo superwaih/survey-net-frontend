@@ -145,6 +145,7 @@ const VerificationForm = () => {
             </small>
           )}
         </div>
+        
         <div className="flex flex-col gap-3">
           <label className="font-semibold" htmlFor="">
             State
