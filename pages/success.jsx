@@ -7,7 +7,7 @@ import React, { useEffect } from "react";
 import { toast } from 'react-toastify';
 import { AiFillCheckCircle } from "react-icons/ai";
 import axios from "axios";
-import { set } from "react-hook-form";
+import Head from "next/head";
 const SuccessPage = () => {
 
   const {
@@ -48,6 +48,9 @@ const SuccessPage = () => {
 
   return (
     <>
+    <Head>
+        <title>Havens</title>
+      </Head>
     {loading && <Spinner />}
     <div className="h-screen w-full p-4 flex items-center justify-center bg-[#5483a0]">
       {paymentSuccess ? (
