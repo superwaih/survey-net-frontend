@@ -80,7 +80,6 @@ const VerificationForm = () => {
         config
       );
 
-      console.log(data);
       if (data.msg == "done") {
         toast.success("Congratulations, Your request has been received", {
           position: "top-right",

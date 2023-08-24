@@ -93,7 +93,6 @@ const SuccessPage = () => {
             setLoading(true)
             handleFlutterPayment({
               callback: async(response) => {
-                console.log(response);
                 closePaymentModal() 
                 if(response.status === "successful"){
                  setLoading(true)
@@ -137,11 +136,15 @@ const SuccessPage = () => {
                    }
                  );
                 }
+            setLoading(false)
+
                // this will close the modal programmatically
              },
-             onClose: () => {},
-            });
+             onClose: () => {
             setLoading(false)
+
+             },
+            });
           }}
           >
 

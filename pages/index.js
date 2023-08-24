@@ -21,7 +21,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const router = useRouter()
  const [toggleSidebar, setToggleSidebar] = useState(false)
- console.log(process.env.PUBLIC_KEY)
   return (
     <>
       <Head>
