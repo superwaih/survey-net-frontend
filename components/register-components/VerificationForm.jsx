@@ -194,7 +194,7 @@ const VerificationForm = () => {
               <input
                 {...register("survey_number", {
                   required: true,
-                  pattern: /^OY\/\d{4}\/\d{4}\/\d{2}$/,
+                  // pattern: /^[a-zA-Z]{2}\/\d{4}\/\d{4}\/\d{2}$/,
                 })}
                 className="px-3 py-4 border   border-yellow-400 rounded-md"
                 type="text"
@@ -245,7 +245,7 @@ const VerificationForm = () => {
               {...register("cof_number", {
                 required: true,
 
-                pattern: /^[a-zA-Z]\d{7}$/,
+                // pattern: /^[a-zA-Z]\d{7}$/,
               })}
               className="px-3 py-4 border border-yellow-400 rounded-md"
               type="text"
